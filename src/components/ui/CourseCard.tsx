@@ -2,11 +2,12 @@ import type { Inscription } from '../../types';
 
 interface CourseCardProps {
   inscription: Inscription;
+  onClick?: () => void;
 }
 
-const CourseCard: React.FC<CourseCardProps> = ({ inscription }) => {
+const CourseCard: React.FC<CourseCardProps> = ({ inscription, onClick }) => {
   return (
-    <div className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200">
+    <div className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer" onClick={onClick}>
       {/* Image */}
       <div className="w-full h-40 bg-gray-200">
         {inscription.course.imageUrl ? (

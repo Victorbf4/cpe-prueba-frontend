@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import Navbar from './components/layout/Navbar';
 import CourseCard from './components/ui/CourseCard';
+import CourseModal from './components/ui/CourseModal';
 import { useFetchUserCourses } from './hooks/useFetchUserCourses';
+import type { Inscription } from './types';
 
 function App() {
   const { data, isLoading, error } = useFetchUserCourses();
+  const [selectedCourse, setSelectedCourse] = useState<Inscription | null>(null);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -97,11 +101,13 @@ function App() {
         {data && !isLoading && !error && (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
             {data.inscriptions.map((item) => (
-              <CourseCard key={item.courseId} inscription={item} />
+              <CourseCard key={item.courseId} inscription={item} onClick={() => setSelectedCourse(item)} />
             ))}
           </div>
         )}
       </div>
+
+      {selectedCourse && <CourseModal inscription={selectedCourse} onClose={() => setSelectedCourse(null)} />}
     </div>
   );
 }
