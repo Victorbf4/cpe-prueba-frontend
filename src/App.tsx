@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Navbar from './components/layout/Navbar';
 import CourseCard from './components/ui/CourseCard';
 import CourseModal from './components/ui/CourseModal';
@@ -9,6 +9,8 @@ function App() {
   const { data, isLoading, error } = useFetchUserCourses();
   const [selectedCourse, setSelectedCourse] = useState<Inscription | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [visibleCount, setVisibleCount] = useState(12);
+  const observerTarget = useRef<HTMLDivElement>(null);
 
   const filteredCourses = data
     ? data.inscriptions.filter(
@@ -17,6 +19,34 @@ function App() {
           item.course.sector.name.toLowerCase().includes(searchTerm.toLowerCase())
       )
     : [];
+
+  const displayedCourses = filteredCourses.slice(0, visibleCount);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && visibleCount < filteredCourses.length) {
+          setVisibleCount((prev) => prev + 12);
+        }
+      },
+      { threshold: 1 }
+    );
+
+    const target = observerTarget.current;
+    if (target) {
+      observer.observe(target);
+    }
+
+    return () => {
+      if (target) {
+        observer.unobserve(target);
+      }
+    };
+  }, [visibleCount, filteredCourses.length]);
+
+  useEffect(() => {
+    setVisibleCount(12);
+  }, [searchTerm]);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -112,12 +142,14 @@ function App() {
         {data && !isLoading && !error && (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
-              {filteredCourses.map((item) => (
+              {displayedCourses.map((item) => (
                 <CourseCard key={item.courseId} inscription={item} onClick={() => setSelectedCourse(item)} />
               ))}
             </div>
 
-            {filteredCourses.length === 0 && (
+            <div ref={observerTarget} className="h-10 w-full mt-4"></div>
+
+            {filteredCourses.length === 0 && displayedCourses.length === 0 && (
               <div className="flex justify-center items-center py-12">
                 <p className="text-gray-500 text-center">No se encontraron cursos que coincidan con tu búsqueda.</p>
               </div>
