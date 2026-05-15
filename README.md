@@ -1,73 +1,51 @@
-# React + TypeScript + Vite
+# Prueba Técnica Frontend - Capacítate para el empleo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositorio contiene la resolución de la prueba técnica para la posición de Desarrollador Front-End. Se trata de un dashboard interactivo diseñado para consumir, renderizar y gestionar los cursos y certificaciones de un usuario final.
 
-Currently, two official plugins are available:
+## 🎯 Objetivo del Proyecto
+Desarrollar una interfaz moderna, responsiva y orientada a la experiencia de usuario (UX) para visualizar los datos provistos por el endpoint de prueba, aplicando buenas prácticas de desarrollo, manejo de estados asíncronos y control de versiones.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Stack Tecnológico y Decisiones Arquitectónicas
 
-## React Compiler
+Dado el límite de tiempo de la prueba y el objetivo de entregar código de la más alta calidad y libre de errores, opté por desarrollar la solución en **React**, tecnología listada como "deseable" en el perfil requerido.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Vite + React:** Elegido por su extrema rapidez de compilación y su peso ligero frente a herramientas más antiguas (CRA) o frameworks orientados a servidor (Next.js). Ideal para una Single Page Application (SPA) pura.
+* **TypeScript:** Implementado para garantizar un tipado estricto (interfaces de `User`, `Course`, `Inscription`). Esto asegura un código autodescriptivo, previene errores en tiempo de ejecución y mejora la mantenibilidad.
+* **Tailwind CSS:** Utilizado para un desarrollo rápido de UI. Permitió construir una interfaz 100% *Mobile-First*, responsiva y moderna, manteniendo un paquete CSS final sumamente ligero (ideal para usuarios con conexiones inestables).
 
-## Expanding the ESLint configuration
+## ✨ Características y UX (Puntos Clave)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Para manejar el volumen de datos (62 cursos) sin saturar al usuario, se implementaron patrones de diseño modernos:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1.  **Scroll Infinito (IntersectionObserver):** En lugar de renderizar todo el DOM de golpe o usar una paginación tradicional que añade fricción, la cuadrícula carga los cursos progresivamente conforme el usuario hace *scroll*, logrando un flujo de exploración ininterrumpido.
+2.  **Búsqueda en Tiempo Real:** Filtro en el lado del cliente (Client-side) que permite buscar cursos por título o categoría de forma instantánea.
+3.  **Divulgación Progresiva (Modal):** Para evitar tarjetas saturadas de texto, la tarjeta principal muestra solo lo esencial (imagen, categoría, título y progreso). Los detalles técnicos (fechas y descargas de certificados) se revelan únicamente cuando el usuario solicita más información al hacer clic.
+4.  **Soporte PWA (Progressive Web App):** Se incluyó un `manifest.json` y meta tags base para dispositivos móviles. El proyecto está estructurado y listo para integrarse fácilmente con **Capacitor** para su empaquetado nativo.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🚀 Instalación y Ejecución
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Para levantar este proyecto en un entorno local, sigue estos pasos:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Clona este repositorio:
+   \`\`\`bash
+   git clone https://github.com/TU_USUARIO/cpe-prueba-frontend.git
+   \`\`\`
+2. Ingresa al directorio del proyecto:
+   \`\`\`bash
+   cd cpe-prueba-frontend
+   \`\`\`
+3. Instala las dependencias:
+   \`\`\`bash
+   npm install
+   \`\`\`
+4. Inicia el servidor de desarrollo:
+   \`\`\`bash
+   npm run dev
+   \`\`\`
+5. Abre la URL indicada en tu terminal (usualmente `http://localhost:5173/`).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 💡 Áreas de Mejora (Roadmap)
+Si este proyecto escalara a producción, sugeriría las siguientes implementaciones:
+* Integrar TanStack Query (React Query) para la gestión avanzada de caché y reintentos automáticos de peticiones fallidas.
+* Implementar *Skeleton Loaders* en lugar del *spinner* circular para una mejor percepción de velocidad en la carga inicial.
+* Agregar pruebas unitarias con Vitest y React Testing Library para los componentes clave y utilidades de formateo.
