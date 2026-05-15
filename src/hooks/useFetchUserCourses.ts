@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { UserProfileResponse } from '../types';
+import type { UserProfileResponse } from '../types';
 import { fetchUserProfile } from '../services/api';
 
 export const useFetchUserCourses = () => {

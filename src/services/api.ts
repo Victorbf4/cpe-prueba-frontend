@@ -1,8 +1,12 @@
-import { UserProfileResponse } from '../types';
+import type { UserProfileResponse } from '../types';
 
-// TODO: Reemplazar con el endpoint real de la prueba técnica
-const API_URL = 'AQUI_VA_EL_ENDPOINT_REAL'; 
+const API_URL = 'https://besvc.capacitateparaelempleo.org/api/inscriptions/TestReport'; 
 
+/**
+ * Realiza la petición HTTP para obtener el perfil del usuario y sus cursos inscritos.
+ * @returns {Promise<UserProfileResponse>} Promesa con la información tipada del usuario.
+ * @throws {Error} Si la petición falla o el servidor no responde correctamente.
+ */
 export const fetchUserProfile = async (): Promise<UserProfileResponse> => {
   const response = await fetch(API_URL);
   if (!response.ok) {
