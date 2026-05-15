@@ -27,21 +27,21 @@ Para manejar el volumen de datos (62 cursos) sin saturar al usuario, se implemen
 Para levantar este proyecto en un entorno local, sigue estos pasos:
 
 1. Clona este repositorio:
-   \`\`\`bash
-   git clone https://github.com/TU_USUARIO/cpe-prueba-frontend.git
-   \`\`\`
+   ```bash
+   git clone https://github.com/Victorbf4/cpe-prueba-frontend.git
+   ```
 2. Ingresa al directorio del proyecto:
-   \`\`\`bash
+   ```bash
    cd cpe-prueba-frontend
-   \`\`\`
+   ```
 3. Instala las dependencias:
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 4. Inicia el servidor de desarrollo:
-   \`\`\`bash
+   ```bash
    npm run dev
-   \`\`\`
+   ```
 5. Abre la URL indicada en tu terminal (usualmente `http://localhost:5173/`).
 
 ## 💡 Áreas de Mejora (Roadmap)
