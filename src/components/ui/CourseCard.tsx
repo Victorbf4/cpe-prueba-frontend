@@ -9,12 +9,12 @@ const CourseCard: React.FC<CourseCardProps> = ({ inscription, onClick }) => {
   return (
     <div className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer" onClick={onClick}>
       {/* Image */}
-      <div className="w-full h-40 bg-gray-200">
+      <div className="w-full h-40 bg-gray-200 p-4 flex items-center justify-center">
         {inscription.course.imageUrl ? (
           <img
             src={inscription.course.imageUrl}
             alt={inscription.course.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
         ) : (
           <div className="w-full h-full bg-gray-200 flex items-center justify-center">
