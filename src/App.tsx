@@ -96,25 +96,43 @@ function App() {
       {/* Profile Banner */}
       <div className="bg-[#f4f7f9] w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex items-center space-x-6">
+          <div className="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
             {/* Large avatar */}
-            <div className="h-24 w-24 rounded-full bg-[#8cb33e] flex items-center justify-center flex-shrink-0">
-              <span className="text-white font-bold text-3xl">{data?.people[0]?.name?.charAt(0) || 'U'}</span>
+            <div className="h-24 w-24 rounded-full bg-gradient-to-br from-[#8cb33e] to-[#6a8a2a] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#8cb33e]/30">
+              <span className="text-white text-5xl font-bold uppercase">{data?.people[0]?.name?.charAt(0) || 'U'}</span>
             </div>
             
             {/* User info */}
             <div className="flex-1">
-              <h2 className="text-2xl font-semibold text-gray-800">¡Hola!</h2>
-              <p>
+              <h2 className="text-gray-500 font-medium">¡Hola!</h2>
+              <p className="text-3xl font-extrabold text-gray-900 tracking-tight">
                 {data?.people[0]?.name} {data?.people[0]?.lastName}
               </p>
-              <p className="text-gray-600 mt-1">
-                {data?.email || 'usuario@ejemplo.com'}
-              </p>
+              <div className="flex items-center gap-2 mt-1">
+                <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                <p className="text-gray-500 text-sm">
+                  {data?.email || 'usuario@ejemplo.com'}
+                </p>
+              </div>
             </div>
 
             {/* Edit button */}
-            <button className="bg-[#8cb33e] hover:bg-[#7a9e35] text-white px-4 py-2 rounded text-sm font-medium transition-colors">
+            <button className="w-full md:w-auto md:ml-auto bg-white border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 shadow-sm transition-all rounded-lg px-5 py-2.5 flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                />
+              </svg>
               Editar
             </button>
           </div>
