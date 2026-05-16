@@ -1,5 +1,7 @@
 # Prueba Técnica Frontend - Capacítate para el empleo
 
+[🚀 Ver Aplicación en Vivo](https://cpe-prueba-frontend.vercel.app/)
+
 Este repositorio contiene la resolución de la prueba técnica para la posición de Desarrollador Front-End. Se trata de un dashboard interactivo diseñado para consumir, renderizar y gestionar los cursos y certificaciones de un usuario final.
 
 ## 🎯 Objetivo del Proyecto
