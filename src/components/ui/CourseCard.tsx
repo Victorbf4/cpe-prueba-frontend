@@ -22,6 +22,9 @@ const CourseCard: React.FC<CourseCardProps> = ({ inscription, onClick }) => {
     return isMoreThanSixMonths && isLowProgress;
   })();
 
+  // Gamification: Calculate if course has exceptional performance
+  const isExcellent = inscription.advance === 100 && inscription.scoreCourse >= 9;
+
   return (
     <div className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer" onClick={onClick}>
       {/* Image */}
@@ -53,8 +56,16 @@ const CourseCard: React.FC<CourseCardProps> = ({ inscription, onClick }) => {
         </div>
 
         {/* Title */}
-        <h3 className="font-bold text-gray-800 text-lg mt-2 line-clamp-2">
+        <h3 className="font-bold text-gray-800 text-lg mt-2 line-clamp-2 flex items-center gap-1">
           {inscription.course.name}
+          {isExcellent && (
+            <span 
+              className="text-yellow-400" 
+              title="Calificación Sobresaliente"
+            >
+              ⭐
+            </span>
+          )}
         </h3>
 
         {/* Forgotten course warning */}
