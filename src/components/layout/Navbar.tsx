@@ -59,7 +59,14 @@ const Navbar: React.FC = () => {
             {/* Avatar with chevron */}
             <div className="flex items-center space-x-2 cursor-pointer">
               <div className="w-9 h-9 rounded-full bg-[#8cb33e] flex items-center justify-center">
-                <span className="text-white font-medium text-sm">U</span>
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  />
+                </svg>
               </div>
               <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path

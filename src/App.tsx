@@ -99,7 +99,7 @@ function App() {
           <div className="flex items-center space-x-6">
             {/* Large avatar */}
             <div className="h-24 w-24 rounded-full bg-[#8cb33e] flex items-center justify-center flex-shrink-0">
-              <span className="text-white font-bold text-3xl">U</span>
+              <span className="text-white font-bold text-3xl">{data?.people[0]?.name?.charAt(0) || 'U'}</span>
             </div>
             
             {/* User info */}
