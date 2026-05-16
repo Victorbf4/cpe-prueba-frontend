@@ -37,7 +37,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ inscription, onClick }) => {
           />
         ) : (
           <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-            <span className="text-gray-400 text-sm">Sin imagen</span>
+            <span className="text-gray-500 text-sm">Sin imagen</span>
           </div>
         )}
       </div>

@@ -20,6 +20,7 @@ const CourseModal: React.FC<CourseModalProps> = ({ inscription, onClose }) => {
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+          aria-label="Cerrar detalles del curso"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path

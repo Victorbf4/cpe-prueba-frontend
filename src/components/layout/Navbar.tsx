@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
             {/* Icons */}
             <div className="flex items-center space-x-3">
               {/* Bell icon */}
-              <button className="text-gray-500 hover:text-gray-700 transition-colors">
+              <button className="text-gray-500 hover:text-gray-700 transition-colors" aria-label="Notificaciones">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
               </button>
 
               {/* Search icon */}
-              <button className="text-gray-500 hover:text-gray-700 transition-colors">
+              <button className="text-gray-500 hover:text-gray-700 transition-colors" aria-label="Buscar">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
