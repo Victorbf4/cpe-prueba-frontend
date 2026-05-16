@@ -88,8 +88,11 @@ const CourseCard: React.FC<CourseCardProps> = ({ inscription, onClick }) => {
         {/* Progress bar */}
         <div className="bg-gray-200 h-2 rounded-full mt-4">
           <div
-            className="bg-[#8cb33e] h-2 rounded-full transition-all duration-300"
-            style={{ width: `${inscription.advance}%` }}
+            className="h-2 rounded-full transition-all duration-300"
+            style={{ 
+              width: `${inscription.advance}%`,
+              backgroundColor: inscription.course.sector.colorTheme
+            }}
           />
         </div>
 

@@ -50,7 +50,13 @@ const CourseModal: React.FC<CourseModalProps> = ({ inscription, onClose }) => {
           {inscription.anyTest && (
             <div className="flex justify-between items-center py-2 border-b border-gray-100">
               <span className="text-gray-600">Evaluación:</span>
-              <span className="bg-[#8cb33e]/10 text-[#8cb33e] text-xs font-medium px-2 py-1 rounded-full">
+              <span 
+                className="text-xs font-medium px-2 py-1 rounded-full"
+                style={{
+                  color: inscription.course.sector.colorTheme,
+                  backgroundColor: `${inscription.course.sector.colorTheme}15`
+                }}
+              >
                 Incluye evaluación
               </span>
             </div>
@@ -75,7 +81,10 @@ const CourseModal: React.FC<CourseModalProps> = ({ inscription, onClose }) => {
                   {formatDate(inscription.certificationDate)}
                 </span>
               </div>
-              <button className="w-full bg-[#8cb33e] text-white p-3 rounded-lg mt-4 font-semibold hover:bg-[#7a9d35] transition-colors">
+              <button 
+                className="w-full text-white p-3 rounded-lg mt-4 font-semibold transition-colors"
+                style={{ backgroundColor: inscription.course.sector.colorTheme }}
+              >
                 Descargar Certificado
               </button>
               <p className="text-xs text-gray-500 text-center mt-2">
