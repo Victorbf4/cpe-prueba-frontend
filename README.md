@@ -15,12 +15,15 @@ Dado el límite de tiempo de la prueba y el objetivo de entregar código de la m
 
 ## ✨ Características y UX (Puntos Clave)
 
-Para manejar el volumen de datos (62 cursos) sin saturar al usuario, se implementaron patrones de diseño modernos:
+Para manejar el volumen de datos sin saturar al usuario y ofrecer una experiencia de nivel producción, se implementaron patrones de diseño modernos:
 
 1.  **Scroll Infinito (IntersectionObserver):** En lugar de renderizar todo el DOM de golpe o usar una paginación tradicional que añade fricción, la cuadrícula carga los cursos progresivamente conforme el usuario hace *scroll*, logrando un flujo de exploración ininterrumpido.
-2.  **Búsqueda en Tiempo Real:** Filtro en el lado del cliente (Client-side) que permite buscar cursos por título o categoría de forma instantánea.
-3.  **Divulgación Progresiva (Modal):** Para evitar tarjetas saturadas de texto, la tarjeta principal muestra solo lo esencial (imagen, categoría, título y progreso). Los detalles técnicos (fechas y descargas de certificados) se revelan únicamente cuando el usuario solicita más información al hacer clic.
-4.  **Soporte PWA (Progressive Web App):** Se incluyó un `manifest.json` y meta tags base para dispositivos móviles. El proyecto está estructurado y listo para integrarse fácilmente con **Capacitor** para su empaquetado nativo.
+2.  **Navegación Moderna (Tabs + Chips):** Se optimizó la arquitectura de la información original de la plataforma. En lugar de anidar pestañas, se utilizaron "Chips" (píldoras) para filtrar rápidamente los cursos por su estado de progreso real (Próximos retos, En progreso, Completados).
+3.  **Identidad Visual Dinámica:** La interfaz adapta sus colores (barras de progreso, botones y badges en modales) inyectando el `colorTheme` nativo de cada categoría de curso, unificando el branding de la plataforma.
+4.  **Gamificación y Retención:** Se integró lógica de negocio directamente en la UI. Los cursos completados con calificación sobresaliente reciben una insignia de excelencia (⭐), mientras que los cursos inactivos por largos periodos muestran recordatorios amigables para incentivar su retoma.
+5.  **Búsqueda en Tiempo Real:** Filtro en el lado del cliente (Client-side) que permite buscar cursos por título o categoría de forma instantánea.
+6.  **Divulgación Progresiva (Modal):** La tarjeta principal muestra solo lo esencial. Los detalles técnicos (fechas, evaluaciones y descargas de certificados) se revelan únicamente cuando el usuario solicita más información al hacer clic.
+7.  **Soporte PWA (Progressive Web App):** Se incluyó un `manifest.json` y meta tags base para dispositivos móviles. El proyecto está estructurado y listo para integrarse fácilmente con **Capacitor** para su empaquetado nativo.
 
 ## 🚀 Instalación y Ejecución
 
