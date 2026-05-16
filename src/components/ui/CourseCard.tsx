@@ -6,6 +6,22 @@ interface CourseCardProps {
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({ inscription, onClick }) => {
+  // Calculate if course is forgotten
+  const isForgotten = (() => {
+    if (!inscription.inscripcionDate) return false;
+    
+    const inscriptionDate = new Date(inscription.inscripcionDate);
+    const currentDate = new Date();
+    const daysSinceInscription = Math.floor(
+      (currentDate.getTime() - inscriptionDate.getTime()) / (1000 * 60 * 60 * 24)
+    );
+    
+    const isMoreThanSixMonths = daysSinceInscription > 180;
+    const isLowProgress = inscription.advance < 25;
+    
+    return isMoreThanSixMonths && isLowProgress;
+  })();
+
   return (
     <div className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer" onClick={onClick}>
       {/* Image */}
@@ -40,6 +56,23 @@ const CourseCard: React.FC<CourseCardProps> = ({ inscription, onClick }) => {
         <h3 className="font-bold text-gray-800 text-lg mt-2 line-clamp-2">
           {inscription.course.name}
         </h3>
+
+        {/* Forgotten course warning */}
+        {isForgotten && (
+          <div className="mt-2 flex items-center gap-1.5">
+            <svg className="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span className="text-xs font-semibold text-amber-600">
+              ¿Retomamos este curso?
+            </span>
+          </div>
+        )}
 
         {/* Progress bar */}
         <div className="bg-gray-200 h-2 rounded-full mt-4">
